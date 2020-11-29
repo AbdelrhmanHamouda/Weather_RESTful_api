@@ -4,11 +4,13 @@ from starlette.requests import Request
 from starlette.templating import Jinja2Templates
 
 api = fastapi.FastAPI()
+# Jinja searches this 'templates' when it gets a request.
 templates = Jinja2Templates('templates')
 
 
 @api.get('/')
 def index(request: Request):
+    # Render 'home/index.html'
     return templates.TemplateResponse('home/index.html', {'request': request})
 
 
