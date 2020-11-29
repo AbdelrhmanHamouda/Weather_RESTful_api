@@ -11,6 +11,7 @@ templates = Jinja2Templates('templates')
 @api.get('/')
 def index(request: Request):
     # Render 'home/index.html'
+    # The request object is needed by starlette and it is safe to pass it as it is.
     return templates.TemplateResponse('home/index.html', {'request': request})
 
 
