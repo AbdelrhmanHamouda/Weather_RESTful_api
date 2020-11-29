@@ -1,11 +1,14 @@
 import fastapi
 import uvicorn
 from starlette.requests import Request
+from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 
 api = fastapi.FastAPI()
 # Jinja searches this 'templates' when it gets a request.
 templates = Jinja2Templates('templates')
+# Opt in making fastAPI pick the 'static' dir to use it
+api.mount('/static', StaticFiles(directory='static'), name='static')
 
 
 @api.get('/')
