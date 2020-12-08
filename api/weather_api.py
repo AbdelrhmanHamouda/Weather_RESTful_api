@@ -4,6 +4,7 @@ import fastapi
 from fastapi import Depends
 
 from models.Location import Location
+from services import openweather_service
 
 router = fastapi.APIRouter()
 
@@ -13,4 +14,5 @@ router = fastapi.APIRouter()
 # The use of Depends() allows the pydantic model to search everywhere in the request and not just in the body. This allowds the detection of variables that are in the request url
 @router.get('/api/weather/{city}')
 def weather(loc: Location = Depends(), units: Optional[str] = 'metric'):
-    return f"{loc.city}, {loc.state}, {loc.country} in {units}"
+    report = openweather_service.get_report(loc.city, loc.state, loc.country, units)
+    return report
