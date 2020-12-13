@@ -12,6 +12,18 @@ Built with fastAPI.
 - Request parameters validation and error handling.
 - Security process implementation.
 
+# Available endpoints
+
+```shell
+# Get all available reports 
+> GET /api/reports
+# Post a new custom report
+> POST /api/reports
+# Get forecast for a specific location
+> GET /api/weather/
+
+```
+
 # How to run
 
 ### Install requirements
@@ -33,3 +45,15 @@ uvicorn main:api
 ```shell script
 python3 main.py
 ```
+
+### Run the terminal utility
+
+```shell
+python3 bin/reportapp.py
+```
+
+# Endpoint documentation
+
+All endpoints are documented at http://127.0.0.1:8005/docs
+Example
+![img.png](openapidocs.png)
