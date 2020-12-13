@@ -44,3 +44,8 @@ uvicorn main:api
 ```shell script
 python3 main.py
 ```
+
+### Run the terminal utility
+```shell
+python3 bin/reportapp.py
+```
