@@ -2,8 +2,10 @@ from typing import Optional
 
 # This library support async / await functionality.
 import httpx
+from httpx import Response
 
 from infrastructure import weather_cache
+from models.validation_error import ValidationError
 
 # This key will be set by the configure_apikeys function on startup
 api_key: Optional[str] = None
@@ -24,7 +26,9 @@ async def get_report_async(city: str, state: Optional[str], country: str, units:
 
     async with httpx.AsyncClient() as clint:
         # Send request
-        response = await clint.get(url)
+        response: Response = await clint.get(url)
+        if response.status_code != 200:
+            raise ValidationError(response.text, status_code=response.status_code)
 
     # Parse data from json to dict
     data = response.json()

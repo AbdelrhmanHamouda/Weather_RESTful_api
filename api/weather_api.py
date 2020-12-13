@@ -4,6 +4,7 @@ import fastapi
 from fastapi import Depends
 
 from models.Location import Location
+from models.validation_error import ValidationError
 from services import openweather_service
 
 router = fastapi.APIRouter()
@@ -14,5 +15,7 @@ router = fastapi.APIRouter()
 # The use of Depends() allows the pydantic model to search everywhere in the request and not just in the body. This allowds the detection of variables that are in the request url
 @router.get('/api/weather/{city}')
 async def weather(loc: Location = Depends(), units: Optional[str] = 'metric'):
-    report = await openweather_service.get_report_async(loc.city, loc.state, loc.country, units)
-    return report
+    try:
+        return await openweather_service.get_report_async(loc.city, loc.state, loc.country, units)
+    except ValidationError as ve:
+        return fastapi.Response(content=ve.error_message, status_code=ve.status_code)
