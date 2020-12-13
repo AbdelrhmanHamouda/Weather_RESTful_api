@@ -25,7 +25,7 @@ def report_event():
         }
     }
 
-    url = "http://127.0.0.1:8000/api/reports"
+    url = "http://127.0.0.1:8005/api/reports"
     resp = requests.post(url, json=data)
     resp.raise_for_status()
 
@@ -34,7 +34,7 @@ def report_event():
 
 
 def see_events():
-    url = "http://127.0.0.1:8000/api/reports"
+    url = "http://127.0.0.1:8005/api/reports"
     resp = requests.get(url)
     resp.raise_for_status()
 

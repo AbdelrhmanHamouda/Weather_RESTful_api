@@ -48,6 +48,17 @@
     </ul>
     </p>
 
+    {% if events %}
+        <div>
+            <h2>Recent events</h2>
+            <ul>
+                {% for event in events %}
+                    <li> {{ event.location.city }}, {{ event.location.country }}: {{ event.description }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
     </div>
 
 {% endblock %}
