@@ -12,7 +12,8 @@ Built with fastAPI.
 - Request parameters validation and error handling.
 - Security process implementation.
 
-# Available endpoints 
+# Available endpoints
+
 ```shell
 # Get all available reports 
 > GET /api/reports
@@ -46,6 +47,13 @@ python3 main.py
 ```
 
 ### Run the terminal utility
+
 ```shell
 python3 bin/reportapp.py
 ```
+
+# Endpoint documentation
+
+All endpoints are documented at http://127.0.0.1:8005/docs
+Example
+![img.png](openapidocs.png)
