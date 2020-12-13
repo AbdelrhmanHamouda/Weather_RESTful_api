@@ -11,7 +11,6 @@ from models.validation_error import ValidationError
 api_key: Optional[str] = None
 
 
-
 async def get_report_async(city: str, state: Optional[str], country: str, units: str) -> dict:
     """
     Function responsible for getting the weather report.
