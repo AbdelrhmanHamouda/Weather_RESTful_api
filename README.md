@@ -3,6 +3,11 @@ A realtime weather RESTful service.
 An API with a simple web interface to tech you how to use it.  
 Built with fastAPI.
 
+# Main ideas implemented
+- Async / await functionality support 
+- Cashing 
+- Request handling 
+- Security process implementation
 
 # How to run
 ### Install requirements 
