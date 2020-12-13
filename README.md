@@ -5,7 +5,7 @@ Built with fastAPI.
 
 # Main ideas implemented
 - Async / await functionality support 
-- Cashing 
+- In memory cashing "this was done mainly to avoid having to setup a server for the service to run." 
 - Request handling 
 - Security process implementation
 
