@@ -12,6 +12,17 @@ Built with fastAPI.
 - Request parameters validation and error handling.
 - Security process implementation.
 
+# Available endpoints 
+```shell
+# Get all available reports 
+> GET /api/reports
+# Post a new custom report
+> POST /api/reports
+# Get forecast for a specific location
+> GET /api/weather/
+
+```
+
 # How to run
 
 ### Install requirements
