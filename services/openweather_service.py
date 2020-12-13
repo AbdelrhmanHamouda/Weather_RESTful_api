@@ -1,12 +1,13 @@
 from typing import Optional
 
-# This key will be set by the configure_apikeys function on startup
-import requests
+# This library support async / await functionality.
+import httpx
 
+# This key will be set by the configure_apikeys function on startup
 api_key: Optional[str] = None
 
 
-def get_report(city: str, state: Optional[str], country: str, units: str) -> dict:
+async def get_report_async(city: str, state: Optional[str], country: str, units: str) -> dict:
     # Change the query based on the provided params
     if state:
         query = f'{city},{state},{country}'
@@ -16,8 +17,9 @@ def get_report(city: str, state: Optional[str], country: str, units: str) -> dic
     # Construct the request url
     url = f'https://api.openweathermap.org/data/2.5/weather?q={query}&units={units}&appid={api_key}'
 
-    # Send request
-    response = requests.get(url)
+    async with httpx.AsyncClient() as clint:
+        # Send request
+        response = await clint.get(url)
 
     # Parse data from json to dict
     data = response.json()
