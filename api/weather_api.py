@@ -4,7 +4,7 @@ import fastapi
 from fastapi import Depends
 
 from models.Location import Location
-from models.reports import Report
+from models.reports import Report, ReportSubmit
 from models.validation_error import ValidationError
 from services import openweather_service, report_service
 
@@ -30,3 +30,10 @@ async def reports_get() -> List[Report]:
     # await report_service.add_report("A", Location(city="Cairo"))
     # await report_service.add_report("B", Location(city='Madrid'))
     return await report_service.get_reports()
+
+
+@router.post('/api/reports', name='add_report')
+async def reports_post(report_submit: ReportSubmit) -> Report:
+    description = report_submit.description
+    location = report_submit.location
+    return await report_service.add_report(description, location)
