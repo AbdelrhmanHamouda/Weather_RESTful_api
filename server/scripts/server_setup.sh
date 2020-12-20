@@ -27,7 +27,6 @@ usermod -L apiuser
 # Run this after creating the file
 setfacl -m u:apiuser:rwx /apps/logs/weather_api
 
-
 # Web app file structure
 mkdir /apps
 chmod 777 /apps
@@ -63,13 +62,15 @@ systemctl enable weather
 # Setup the public facing server (NGINX)
 apt install nginx
 
+# Get machine IP address
+hostname -I
+
 # CAREFUL HERE. If you are using default, maybe skip this
 rm /etc/nginx/sites-enabled/default
 
 cp /apps/app_repo/ch08-deployment/server/nginx/weather.nginx /etc/nginx/sites-enabled/
 update-rc.d nginx enable
 service nginx restart
-
 
 # Optionally add SSL support via Let's Encrypt:
 # https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04
